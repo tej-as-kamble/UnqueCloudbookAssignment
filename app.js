@@ -22,7 +22,11 @@ app.use("/api/user", slotsRoutes);
 app.use("/api/appointments", appointmentRoutes);
 
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
+}
+
+module.exports = app;
